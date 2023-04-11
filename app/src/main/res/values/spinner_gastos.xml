@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_gastos">
+        <item>Materiais</item>
+        <item>Transporte</item>
+        <item>Consultas</item>
+    </string-array>
+</resources>

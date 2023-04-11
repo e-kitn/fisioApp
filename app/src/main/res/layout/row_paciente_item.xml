@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/colorSecondary"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="@dimen/_5sdp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/paciente_image"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/baseline_person_24"
+            app:civ_border_width="@dimen/_1sdp"
+            app:civ_border_color="@color/white"
+            android:padding="@dimen/_5sdp"/>
+        <TextView
+            android:id="@+id/paciente_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paciente"
+            android:textColor="@color/colorTextSecondary"
+            android:layout_toEndOf="@id/paciente_image"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/_16sdp"/>
+        <ImageView
+            android:id="@+id/paciente_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_edit_24"
+            app:tint="#FFC107"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_35sdp"/>
+        <ImageView
+            android:id="@+id/paciente_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_clear_24"
+            app:tint="#F44336"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_5sdp"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
