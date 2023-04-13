@@ -6,13 +6,81 @@
     android:layout_height="match_parent"
     android:background="@color/colorSecondary"
     tools:context=".AgendaActivity"
-    android:id="@+id/agenda_activity">
+    android:id="@+id/agenda_activity"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_view_id"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="agendaaaaaaa"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/_50sdp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:id="@+id/dayContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+                    <EditText
+                        android:id="@+id/consultaEt"
+                        android:layout_width="@dimen/_240sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="Consulta"
+                        android:inputType="text"
+                        android:textColorHint="@color/colorTextSecondary"
+                        android:background="@drawable/background_input_field"
+                        android:padding="@dimen/_10sdp"
+                        android:drawableStart="@drawable/baseline_calendar_month_24"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:textSize="@dimen/_14sdp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:layout_marginTop="@dimen/_256sdp"
+                        android:layout_marginLeft="@dimen/_3sdp"/>
+                    <ImageView
+                        android:id="@+id/adicionar"
+                        android:layout_width="35sp"
+                        android:layout_height="35sp"
+                        android:src="@drawable/baseline_add_24"
+                        app:tint="@color/colorTextSecondary"
+                        android:background="@drawable/background_input_field"
+                        android:backgroundTint="@color/colorTextPrimary"
+                        android:layout_marginTop="@dimen/_261sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_toRightOf="@id/consultaEt"/>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/consultaCv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_310sdp"
+                        android:backgroundTint="@color/colorSecondary"
+                        app:cardUseCompatPadding="true">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/tipo_image"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:src="@drawable/baseline_medical_information_24"
+                            app:civ_border_width="@dimen/_1sdp"
+                            app:civ_border_color="@color/white"
+                            android:padding="@dimen/_5sdp"/>
+                        <TextView
+                            android:id="@+id/consultaTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_35sdp"
+                            android:layout_toEndOf="@id/tipo_image"
+                            android:text="Nome consulta"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="@dimen/_16sdp" />
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </RelativeLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

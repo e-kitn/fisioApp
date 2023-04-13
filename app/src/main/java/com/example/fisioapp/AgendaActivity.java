@@ -1,18 +1,42 @@
 package com.example.fisioapp;
 
 import static com.example.fisioapp.R.id.bottom_appbar;
+import static com.example.fisioapp.R.id.save;
 
 import android.content.Intent;
+import android.media.metrics.Event;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CalendarView;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class AgendaActivity extends AppCompatActivity {
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+public class AgendaActivity extends AppCompatActivity{
+
+    private int currentDay, currentMonth, currentYear = 0;
+
+    private TextView monthYearText;
+    private RecyclerView calendarRecyclerView;
+    private ListView eventListView;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
@@ -22,6 +46,52 @@ public class AgendaActivity extends AppCompatActivity {
         //inicialization
         //appbar
         BottomNavigationView bottomNavigationView = findViewById(R.id.agenda_bottom_appbar);
+
+        //calendar
+        CalendarView calendarView = findViewById(R.id.calendarView);
+
+        //edittext
+        EditText consultaEt = findViewById(R.id.consultaEt);
+
+        //textview
+        TextView consultaTv = findViewById(R.id.consultaTv);
+
+        //imageview
+        ImageView adicionar = findViewById(R.id.adicionar);
+
+        //daycontent
+        View dayContent = findViewById(R.id.dayContent);
+
+        List<String> calendarStrings = new ArrayList<>();
+        int[] days = new int[30];
+
+        //listener imageview
+        adicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                days[0] = currentDay;
+                calendarStrings.add(String.valueOf(calendarView.getDate()));
+                calendarStrings.add(consultaEt.getText().toString());
+                consultaEt.setText("");
+            }
+        });
+
+        //listener calendar
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day){
+                currentDay = day;
+                currentMonth = month;
+                currentYear = year;
+                if(dayContent.getVisibility() == View.GONE){
+                    dayContent.setVisibility(View.VISIBLE);
+                }
+
+                if(currentDay == days[0]){
+                    consultaTv.setText(calendarStrings.get(0).toString());
+                }
+            }
+        });
 
         //listener bottomnavigationview
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
