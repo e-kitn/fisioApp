@@ -1,8 +1,12 @@
 package com.example.fisioapp;
 
+import static com.example.fisioapp.R.id.agenda_activity;
 import static com.example.fisioapp.R.id.bottom_appbar;
+import static com.example.fisioapp.R.id.consultaEt;
+import static com.example.fisioapp.R.id.consultaTv;
 import static com.example.fisioapp.R.id.save;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.metrics.Event;
 import android.os.Build;
@@ -11,6 +15,7 @@ import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,7 +37,8 @@ import java.util.List;
 
 public class AgendaActivity extends AppCompatActivity{
 
-    private int currentDay, currentMonth, currentYear = 0;
+    private int currentDay, currentMonth, currentYear, index = 0;
+    private String horario;
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
@@ -52,9 +58,11 @@ public class AgendaActivity extends AppCompatActivity{
 
         //edittext
         EditText consultaEt = findViewById(R.id.consultaEt);
+        EditText horarioEt = findViewById(R.id.horarioEt);
 
         //textview
         TextView consultaTv = findViewById(R.id.consultaTv);
+        TextView horarioTv = findViewById(R.id.horarioTv);
 
         //imageview
         ImageView adicionar = findViewById(R.id.adicionar);
@@ -63,18 +71,11 @@ public class AgendaActivity extends AppCompatActivity{
         View dayContent = findViewById(R.id.dayContent);
 
         List<String> calendarStrings = new ArrayList<>();
-        int[] days = new int[30];
-
-        //listener imageview
-        adicionar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                days[0] = currentDay;
-                calendarStrings.add(String.valueOf(calendarView.getDate()));
-                calendarStrings.add(consultaEt.getText().toString());
-                consultaEt.setText("");
-            }
-        });
+        List<String> timeStrings = new ArrayList<>();
+        final int numberOfDays = 2000;
+        final int[] days = new int[numberOfDays];
+        final int[] months = new int[numberOfDays];
+        final int[] years = new int[numberOfDays];
 
         //listener calendar
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -87,9 +88,41 @@ public class AgendaActivity extends AppCompatActivity{
                     dayContent.setVisibility(View.VISIBLE);
                 }
 
-                if(currentDay == days[0]){
-                    consultaTv.setText(calendarStrings.get(0).toString());
+                for(int h = 0; h < index; h++){
+                    if(years[h] == currentYear){
+                        for(int i = 0; i < index; i++){
+                            if(days[i] == currentDay){
+                                for(int j = 0; j < index; j++){
+                                    if(months[j] == currentMonth && days[j] == currentDay && years[j] == currentYear){
+                                        consultaTv.setText(calendarStrings.get(j));
+                                        horarioTv.setText(timeStrings.get(j));
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+                horarioTv.setText("    ");
+                consultaTv.setText("Sem consultas hoje!");
+            }
+        });
+
+        //listener imageview botao
+        adicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                days[index] = currentDay;
+                months[index] = currentMonth;
+                years[index] = currentYear;
+
+                calendarStrings.add(index, consultaEt.getText().toString());
+                timeStrings.add(index, horarioEt.getText().toString());
+
+                horarioEt.setText("");
+                consultaEt.setText("");
+                index++;
+                dayContent.setVisibility(View.GONE);
             }
         });
 

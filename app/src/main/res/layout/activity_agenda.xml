@@ -38,24 +38,39 @@
                         android:drawablePadding="@dimen/_5sdp"
                         android:textSize="@dimen/_14sdp"
                         android:textColor="@color/colorTextSecondary"
-                        android:layout_marginTop="@dimen/_256sdp"
+                        android:layout_marginTop="@dimen/_286sdp"
                         android:layout_marginLeft="@dimen/_3sdp"/>
-                    <ImageView
-                        android:id="@+id/adicionar"
-                        android:layout_width="35sp"
-                        android:layout_height="35sp"
-                        android:src="@drawable/baseline_add_24"
-                        app:tint="@color/colorTextSecondary"
+                    <EditText
+                        android:id="@+id/horarioEt"
+                        android:layout_width="@dimen/_240sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="Horário"
+                        android:inputType="time"
+                        android:textColorHint="@color/colorTextSecondary"
                         android:background="@drawable/background_input_field"
-                        android:backgroundTint="@color/colorTextPrimary"
-                        android:layout_marginTop="@dimen/_261sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_toRightOf="@id/consultaEt"/>
+                        android:padding="@dimen/_10sdp"
+                        android:drawableStart="@drawable/baseline_access_alarm_24"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:textSize="@dimen/_14sdp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:layout_marginTop="@dimen/_330sdp"
+                        android:layout_marginLeft="@dimen/_3sdp"/>
+                        <ImageView
+                            android:id="@+id/adicionar"
+                            android:layout_width="35sp"
+                            android:layout_height="35sp"
+                            android:src="@drawable/baseline_add_24"
+                            app:tint="@color/colorTextSecondary"
+                            android:background="@drawable/background_input_field"
+                            android:backgroundTint="@color/colorTextPrimary"
+                            android:layout_marginTop="@dimen/_312sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_toRightOf="@id/consultaEt"/>
                     <androidx.cardview.widget.CardView
                         android:id="@+id/consultaCv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_310sdp"
+                        android:layout_marginTop="@dimen/_370sdp"
                         android:backgroundTint="@color/colorSecondary"
                         app:cardUseCompatPadding="true">
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -74,9 +89,23 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_35sdp"
                             android:layout_toEndOf="@id/tipo_image"
-                            android:text="Nome consulta"
+                            android:text="Sem consultas hoje"
                             android:textColor="@color/colorTextSecondary"
                             android:textSize="@dimen/_16sdp" />
+                        <TextView
+                            android:id="@+id/horarioTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginVertical="@dimen/_20sdp"
+                            android:text="00:00"
+                            android:textColor="@color/colorTextPrimary"
+                            android:background="@drawable/background_input_field"
+                            android:layout_marginRight="5sp"
+                            android:paddingLeft="@dimen/_3sdp"
+                            android:paddingRight="@dimen/_3sdp"
+                            android:paddingTop="@dimen/_1sdp"
+                            android:paddingBottom="@dimen/_1sdp"/>
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
             </RelativeLayout>
