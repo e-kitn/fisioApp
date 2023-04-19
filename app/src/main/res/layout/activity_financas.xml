@@ -15,10 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/gastos"
+                android:id="@+id/gastosTv"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="R$ 303,37"
+                android:text="R$ 0.00"
                 android:textColor="@color/colorTextPrimary"
                 android:layout_centerHorizontal="true"
                 android:textSize="@dimen/_30sdp"/>
@@ -26,10 +26,10 @@
                 android:id="@+id/text_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="@+id/gastos"
+                android:layout_alignParentBottom="@+id/gastosTv"
                 android:text="Lucro Total"
                 android:textColor="@color/colorTextSecondary"
-                android:layout_alignParentEnd="@+id/gastos"
+                android:layout_alignParentEnd="@+id/gastosTv"
                 android:layout_centerHorizontal="true"
                 android:paddingTop="@dimen/_33sdp"
                 android:textSize="@dimen/_15sdp"/>
@@ -100,13 +100,13 @@
                     android:textColor="@color/colorTextSecondary"
                     android:textSize="@dimen/_16sdp" />
                 <TextView
-                    android:id="@+id/valor_gasto"
+                    android:id="@+id/materiaisTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginVertical="@dimen/_20sdp"
-                    android:text="R$ - 63,50"
-                    android:textColor="@color/colorThemeExtra"
+                    android:text="R$ 0.00"
+                    android:textColor="@color/colorTextPrimary"
                     android:background="@drawable/background_input_field"
                     android:layout_marginRight="5sp"
                     android:paddingLeft="@dimen/_3sdp"
@@ -138,12 +138,13 @@
                     android:textColor="@color/colorTextSecondary"
                     android:textSize="@dimen/_16sdp" />
                 <TextView
+                    android:id="@+id/transporteTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginVertical="@dimen/_20sdp"
-                    android:text="R$ - 53,13"
-                    android:textColor="@color/colorThemeExtra"
+                    android:text="R$ 0.00"
+                    android:textColor="@color/colorTextPrimary"
                     android:background="@drawable/background_input_field"
                     android:layout_marginRight="5sp"
                     android:paddingLeft="@dimen/_3sdp"
@@ -175,11 +176,12 @@
                     android:textColor="@color/colorTextSecondary"
                     android:textSize="@dimen/_16sdp" />
                 <TextView
+                    android:id="@+id/consultaTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginVertical="@dimen/_20sdp"
-                    android:text="R$ + 420,00"
+                    android:text="R$ 0.00"
                     android:textColor="@color/colorTextPrimary"
                     android:background="@drawable/background_input_field"
                     android:layout_marginRight="5sp"
